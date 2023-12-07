@@ -1,16 +1,21 @@
 import React, {useState} from 'react';
-// import Hatch from './components/Hatch/Hatch';
 import { HatchType, createCalendar } from './helpers';
-// // Styles
-// import { GlobalStyle, StyledApp } from './App.styles';
+import Hatch from './components/Hatch/Hatch';
+
+// Styles
+import { StyledApp } from './App.styles';
 
 const App: React.FC = () => {
   const [hatches, setHatches] = useState<HatchType[]>(createCalendar());
 
+  const handleClick = () => console.info("click!");
+
   return (
-      <div>
-        <h1>hello there!</h1>
-      </div>
+    <StyledApp>
+      {hatches.map(hatch => (
+        <Hatch key={hatch.nr} hatch={hatch} handleClick={handleClick} />
+      ))}
+    </StyledApp>
   );
 };
 
